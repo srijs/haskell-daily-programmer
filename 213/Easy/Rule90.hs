@@ -49,7 +49,7 @@ next rule = unfoldr (fmap f) . intoView
               in (c, moveRight v)
 
 run :: Rule -> [Bool] -> [[Bool]]
-run rule bs = bs : run rule (next rule bs)
+run = iterate . next
 
 runAndShow :: Rule -> Int -> [Bool] -> String
 runAndShow rule n = intercalate "\n" . map showBits . take n . run rule
